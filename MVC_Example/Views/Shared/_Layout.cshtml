@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MVC_Example</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    
+</head>
+<body>
+    <h1>MVC_Example Website</h1>
+    <nav>
+        @*
+        https://localhost:44364
+            /{controller}/{action}
+            /Home/Index
+            /Home/About
+            /Home/Contact
+        *@
+
+        @*Example of an anchor tag--DO NOT USE--Works fine, but links will break if someone changes the controller, not dynamic *@
+        <a href="/Home/About">About1</a>
+        <br />
+
+        @*HTML HELPER VERSION OF A LINK*@
+        @Html.ActionLink("About2", "About", "Home")
+        <br />
+
+        @*ASP.NET Core Tag Helper **RECOMOMENDED WAY***@
+        <a asp-controller="Home" asp-action="About">About3</a>
+        <br />
+
+        <a asp-controller="Home" asp-action="Contact">Contact</a>
+        <br />
+
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <br />
+
+        <a asp-controller="Rob" asp-action="Bio">Bio</a>
+
+    </nav>
+    <main>
+        @*Don't put a semi colon here for server side method being called*@
+        @RenderBody()
+    </main>
+</body>
+</html>
